@@ -1,0 +1,16 @@
+{
+    " Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?": {
+        "syarat": {
+            "kolom": " Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?",
+            "nilai_batasan": null,
+            "tipe data": null,
+            "tipe property": "QuestionDetail"
+        },
+        "tahun": {
+            "kolom": "Tahun",
+            "nilai_batasan": null,
+            "tipe data": null,
+            "tipe property": null
+        }
+    }
+}
