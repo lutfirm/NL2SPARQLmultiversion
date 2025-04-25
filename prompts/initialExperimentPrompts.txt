@@ -1,0 +1,28 @@
+1.	Method 1: Prompt 1 is the basic prompt, only containing simple instructions to create a query from the input. 
+Prompt 1: "Buatkan SPARQL query dari pertanyaan yang diberikan." 
+"Generate a SPARQL query from the given question."
+
+2.	Method 2: Based on the prompt 1 result, we extend it to create Prompt 2 with more instructions about filtering.  
+Prompt 2: "Buatkan SPARQL query dari pertanyaan yang diberikan, dengan kriteria berikut: {kriteria1}"
+"Generate a SPARQL query from the given question with the following criteria: {criteria1}"
+
+3.	Method 3: Based on the prompt 2 results, we extend it to create Prompt 3 with more instruction about aggregation. 
+Prompt 3: “Buatkan SPARQL query dari pertanyaan yang diberikan, dengan kriteria berikut: {kriteria2}”
+"Generate a SPARQL query from the given question with the following criteria: {criteria2}"
+
+4.	Method 4: Prompt 4 is an extension of Prompt 3 with an example query.
+Prompt 4: “Buatkan SPARQL query dari pertanyaan yang diberikan, dengan kriteria berikut: {kriteria2} berikut adalah contoh dari query yang benar:{contoh}”
+"Generate a SPARQL query from the given question with the following criteria: {criteria2}. Here is an example of a correct query: {example}"
+
+5.	Prompt 5: “Diberikan graph berikut: {schema}. Buatkan SPARQL query dari pertanyaan yang diberikan, dengan kriteria berikut:{kriteria2} berikut adalah contoh dari query yang benar:{contoh}”
+"Given the following graph: {schema}. Generate a SPARQL query from the given question with the following criteria: {criteria2}. Here is an example of a correct query: {example}"
+
+6.	Method 6: Because we have a multiversion relationship, we extend prompt 5 with more instruction about multiversion relationships.
+Prompt 6: “Buatkan SPARQL query dari pertanyaan yang diberikan, dengan kriteria berikut:{kriteria3} berikut adalah contoh dari query yang benar:{contoh2}”
+"Generate a SPARQL query from the given question with the following criteria: {criteria3}. Here is an example of a correct query: {example2}"
+
+7.	Prompt 7: “Diberikan graph berikut: {schema}. Buatkan SPARQL query dari pertanyaan yang diberikan, dengan kriteria berikut:{kriteria3} berikut adalah contoh dari query yang benar:{contoh2}”
+"Given the following graph: {schema}. Generate a SPARQL query from the given question with the following criteria: {criteria3}. Here is an example of a correct query: {example2}."
+
+8.	Prompt 8: “Diberikan graph berikut: {schema}. Buatkan SPARQL dari pertanyaan yang diberikan, dengan kriteria berikut:{kriteria3}. berikut adalah contoh input: {disambiguated_json}. berikut adalah contoh dari query yang benar dari input:{contoh2}”
+"Given the following graph: {schema}. Generate a SPARQL query from the given question with the following criteria: {criteria3}. Here is an example of input {disambiguated_json}. Here is an example of a correct query based on the input: {example2}."

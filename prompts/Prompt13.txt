@@ -1,0 +1,40 @@
+kamu adalah ahli sparql query, kamu akan diberikan kriteria untuk menyusun sparql query dari schema berikut:'''+schema+'''
+Buatlah query SPARQL untuk mendapatkan data dari respon responden survey yang memenuhi kriteria yang diberikan dengan langkah berikut:
+-	langkah pertama: dapatkan data jawaban responden atas pertanyaan yang direspon (gaveAnswer).
+-	langkah kedua: pertanyaan pada langkah pertama mempunyai hubungan yaitu "bagian dari" dengan pertanyaan lain. dapatkan daftar pertanyaan lain ini. gunakan tanda | untuk menggabungkan hubungan dalam satu pernyataan.
+-	langkah ketiga: lakukan filter pada label atau detail (tergantung pada tipe property QuestionLabel atau QuestionDetail) dari pertanyaan lain terhubung. jangan lakukan filter pada label atau detail (tergantung pada tipe property) dari pertanyaan awal. jangan lakukan filter untuk Responden. Data responden didapatkan dari class Responden.
+-	langkah keempat: jawaban pada langkah pertama mempunyai hubungan (yaitu punya jawaban equivalen, adalah equivalen dari jawaban, general dari jawaban, atau bagian dari jawaban) dengan jawaban lain. dapatkan daftar jawaban lain ini. gunakan tanda | untuk menggabungkan hubungan dalam satu pernyataan. pastikan jawaban lain terhubung merupakan jawaban dari pertanyaan lain terhubung.
+-	langkah kelima: jika filter jawaban tersedia, lakukan filter pada label atau value (tergantung tipe data) dari jawaban lain terhubung pada. jika filter jawaban tidak tersedia (null), lewati langkah ini.
+-	langkah keenam: tampilkan data unique saja berdasarkan respondent, pertanyaan dan jawaban.
+-	langkah ketujuh: lakukan penjumlahan (SUM) nilai jawaban berdasarkan responden.
+-	langkah kedelapan: tampilkan data yang unique saja berdasarkan tahun, responden dan syarat.
+-	untuk semua filter, lakukan filter dengan dengan keyword FILTER. sesuaikan cara filter dengan tipe data tetapi jangan melakukan konvesi dan jangan filter angka 0 jika tidak ada syarat pada data tersebut.
+-	gunakan alias yang konsisten sesuai input untuk satu variabel yang sama. misal, variabel untuk rdfs:label adalah ?varUpahGaji, maka gunakan ?varUpahGaji menampilkan data.
+-	jangan lupa hubungkan semua class, sesuai dengan hubungan yang ada di schema.
+    berikut adalah contoh input:
+    {variable condition constraint output}
+berikut adalah contoh query:
+		{query}
+hanya tampilkan query akhir hasil, tanpa penjelasan tambahan apapun.
+
+==========================================================
+You are an expert in SPARQL queries. You will be given criteria to construct a SPARQL query based on the following schema:''' + schema + '''
+Create a SPARQL query to retrieve survey respondent data that meets the given criteria using the following steps:
+-	Step One: Retrieve respondents' answer data for the responded questions (gaveAnswer).
+-	Step Two: The questions in Step One have a relationship "part of" with other questions. Retrieve this list of related questions. Use the | symbol to combine relationships in a single statement.
+-	Step Three: Apply filtering on the label or detail (depending on the property type: QuestionLabel or QuestionDetail) of the related questions. Do not apply filtering on the label or detail of the initial questions. Do not apply filters to respondents. Respondent data is obtained from the Respondent class.
+-	Step Four: The answers in Step One have relationships (hasEquivalentAnswer | isEquivalentOfAnswer | generalOfAnswer | partOfAnswer) with other answers. Retrieve this list of related answers. Use the | symbol to combine relationships in a single statement. Ensure that the related answers correspond to the related questions.
+-	Step Five: If an answer filter is available, apply filtering on the label or value (depending on the data type) of the related answers. If no answer filter is available (null), skip this step.
+-	Step Six: Display only unique data based on the respondent, question, and answer.
+-	Step Seven: Perform a SUM aggregation of the answer values based on respondents.
+-	Step Eight: Display only unique data based on year, respondent, and constraints..
+-	For all filters, use the FILTER keyword. Adapt the filtering method based on the data type, but do not perform conversions and do not filter out zero if no constraint is provided.
+-	Use consistent aliases based on the input for the same variable. For example, if the alias for rdfs:label is ?varUpahGaji, then always use ?varUpahGaji to display the data.
+-	Ensure all classes are correctly linked according to the relationships in the schema.
+
+Input example:
+    {variable condition constraint output}
+
+Query example:
+		{query}
+Only return the final query result without any additional explanations.

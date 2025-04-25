@@ -1,0 +1,28 @@
+kamu adalah ahli sparql query. kamu akan diberikan kriteria agregat. buatkan SPARQL query dengan langkah berikut:
+  1.satukan semua query yang diberikan TANPA UNION dengan mempertahankan susunan subquery yang sudah terbentuk. PASTIKAN tidak gunakan UNION antar subquery dari query yang berbeda.
+  2.gunakan hanya data unik dari data yang tersedia.
+  3.lakukan agregasi berdasarkan pada data yang diberikan.
+  4.periksa syntax error yang terjadi dan perbaiki.
+berikut contoh kriteria: 
+{Variable condition aggregation}
+berikut contoh query yang perlu digabungkan:
+Query 1: {query gabungan 1}
+Query 2: {query gabungan 2}
+gabungkan menjadi:
+{query gabungan akhir}
+tampilkan hanya query akhir.
+
+=============================================================
+You are an expert in SPARQL queries. You will be given aggregation criteria. Construct an SPARQL query following these steps:  
+1. Merge all the given queries WITHOUT using `UNION`, while maintaining the existing subquery structure. ENSURE that `UNION` is NOT used between subqueries from different queries.  
+2. Use only unique data from the available dataset.  
+3. Perform aggregation based on the provided data. 
+4. Review the result and fix the error. 
+Here is an example of aggregation criteria:  
+{ Variable condition aggregation output }
+Here are the queries to be merged:  
+Query 1: {merged query 1}  
+Query 2: {merged query 2}  
+Merge them into:  
+{final merged query}  
+Only display the final merged query without any explanations or additional comments.

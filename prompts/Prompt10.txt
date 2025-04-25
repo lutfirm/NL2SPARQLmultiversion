@@ -1,0 +1,39 @@
+kamu adalah ahli sparql query, kamu akan diberikan kriteria untuk menyusun sparql query dari schema berikut:
+    '''+schema+'''
+
+Buatlah query SPARQL untuk mendapatkan data dari respon responden survey yang memenuhi kriteria yang diberikan untuk mendapatkan data jawaban dari pertanyaan yang memuat kolom syarat. pastikan tuliskan dalam tanda kurung { } dengan benar.
+-	tampilkan data yang unique saja dari hasil gabungan query.
+-	selanjutnya gabungkan dengan bagian query lain dari semua class yang diperlukan.
+-	jangan lupa hubungkan semua class, sesuai dengan hubungan yang ada di schema.
+-	jangan lakukan filter untuk Responden. Data responden didapatkan dari class Responden.
+-	untuk semua filter, lakukan filter dengan dengan keyword FILTER. sesuaikan cara filter dengan tipe data tetapi jangan melakukan konvesi dan jangan filter angka 0 jika tidak ada syarat pada data tersebut.
+-	gunakan alias yang konsisten sesuai input untuk satu variabel yang sama. misal, variabel untuk rdfs:label adalah ?varUpahGaji, maka gunakan ?varUpahGaji menampilkan data.
+-	untuk pertanyaan (Question), selalu lakukan filter kolom pada property yang disebutkan pada tipe. misal Tahun difilter dari tahun class survey.
+-	untuk jawaban (Answer), hanya lakukan filter nilai batasan disediakan pada jawaban. tidak perlu lakukan filter jika nilai batasan tidak ada (null).  lakukan filter regex nilai batasan pada label jika tipe string dan lakukan filter nilai batasan pada value jawaban jika tipe angka.
+
+    berikut adalah contoh input:
+		{variable constraint}
+
+    berikut adalah contoh query:
+		{query}
+
+    - hanya tampilkan query akhir hasil, tanpa penjelasan tambahan apapun.
+
+======================================================
+You are an expert in SPARQL queries. You will be given criteria to construct a SPARQL query based on the following schema:''' + schema + '''
+Create a SPARQL query to retrieve data from survey respondents that meet the given criteria to obtain answer data for questions containing the required columns. Ensure the query is correctly enclosed within curly brackets { }.
+-	Display only unique data from the combined query results.
+-	Then, merge it with other query parts from all necessary classes.
+-	Ensure all classes are correctly linked according to the relationships in the schema.
+-	Do not filter Respondent data. Respondent data is obtained from the Respondent class.
+-	Use the FILTER keyword for all conditions, adapting the filtering method to the data type. However, - do not perform conversions and do not filter out zero if no condition is specified for that data.
+-	Use consistent aliases for the same variable based on the input. For example, if the alias for rdfs:label is ?varUpahGaji, then always use ?varUpahGaji to display the data.
+-	For questions (Question), always apply filtering on the property mentioned in the type. For example, Tahun should be filtered from the year property in the Survey class.
+-	For answers (Answer), only apply filters if a threshold value is specified. If the threshold value is null, no filtering is needed. Apply regex filtering on labels if the type is a string, and apply value filtering on answer values if the type is a number.
+Here is the input example:
+    {variable condition constraint output}
+
+Here is the query example:
+		{query}
+
+Only return the final query result without any additional explanations.

@@ -1,0 +1,22 @@
+langkah pertama: ambil bagian select dari setiap subquery dalam query, jadikan sebagai subquery. pertahankan susunan syntax subquery
+langkah kedua: gabungkan subquery yang diberikan dengan UNION. pertahankan bagian prefiks dan select luar.
+langkah ketiga: tampilkan semua variable yang ada di subquery. jika ada nama variable yang berbeda namun seharusnya sama, ubah menjadi sama dan sesuaikan variabel di bagian lain.
+Berikut adalah contohnya:
+Query 1: {query type 1}
+Query 2: {query type 2}
+Query 3: {query type 3}
+berikut adalah hasil gabungannya:
+		{query}
+tampilkan hanya query hasil akhir gabungan tanpa penjelasan atau tambahan keterangan apapun.
+
+===============================================
+Step One: Extract the `SELECT` part from each subquery within the query and make them separate subqueries. Maintain the subquery syntax structure.  
+Step Two: Combine the given subqueries using `UNION`. Retain the prefix section and the outer `SELECT` statement.  
+Step Three: Display all variables present in the subqueries. If there are different variable names that should be the same, standardize them and adjust the variables accordingly in other parts.  
+Here is an example:  
+Query 1: {query type 1}
+Query 2: {query type 2}
+Query 3: {query type 3}
+Here is the merged result:  
+		{query}
+Only display the final merged query without any explanations or additional comments.
