@@ -1,0 +1,55 @@
+PREFIX : <http://example.org/survey#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?Tahun ?Respondent ?JumlahJamKerja
+WHERE {
+  ?Survey a :Survey ;
+    :hasYear ?Tahun ;
+    :hasRespondent ?Respondent .
+  FILTER (?Tahun >= 2010 && ?Tahun <= 2024) .
+  
+  {
+    SELECT distinct ?Respondent ?JumlahJamKerja
+    WHERE {
+      ?Respondent :respondedToQuestion ?Question ;
+        :gaveAnswer ?Answer .
+      ?Answer :isAnswerOf ?Question ;
+        rdfs:label ?JumlahJamKerja .
+      ?Question :hasQuestionDetail ?kolom_filter .
+      FILTER (regex(?kolom_filter, "Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?", "i")) .
+    }
+  } UNION
+  {
+    SELECT distinct ?Respondent ?JumlahJamKerja
+    WHERE {
+      ?Respondent :respondedToQuestion ?Question ;
+        :gaveAnswer ?Answer .
+
+      ?Question :hasQuestionDetail ?kolom ;
+        :isEquivalentToQuestion | :hasEquivalentQuestion | :isGeneralQuestionOf ?relatedQuestion .
+      ?relatedQuestion :hasQuestionDetail ?kolom_filter .
+      FILTER (regex(?kolom_filter, "Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?", "i")) .
+
+      ?Answer :isAnswerOf ?Question ;
+        rdfs:label ?JumlahJamKerja .
+    }
+  } UNION
+  {
+    SELECT distinct ?Respondent (SUM(?nilaiJumlahJamKerja) as ?JumlahJamKerja)
+    WHERE {
+      ?Respondent :respondedToQuestion ?Question3 ;
+        :gaveAnswer ?Answer3 .
+
+      ?Question3 rdfs:label ?kolom1 ;
+        :isPartOfQuestion ?relatedQuestion1 .
+      ?relatedQuestion1 :hasQuestionDetail ?kolom_filter3 .
+      FILTER (regex(?kolom_filter3, "Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?", "i")) .
+
+      ?Answer3 :isAnswerOf ?Question3 ;
+        rdfs:label ?nilaiJumlahJamKerja .
+    }
+    group by ?Respondent
+  }
+}
+
