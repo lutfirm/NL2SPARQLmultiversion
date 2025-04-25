@@ -1,0 +1,63 @@
+PREFIX : <http://example.org/survey#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?JumlahJamKerja ?Tahun (COUNT(DISTINCT ?Respondent) AS ?CountRespondent)
+WHERE {
+      SELECT DISTINCT ?Tahun ?Respondent ?JumlahJamKerja
+    WHERE {
+      ?Survey a :Survey ;
+      :hasYear ?Tahun ;
+      :hasRespondent ?Respondent .
+      FILTER (?Tahun >= 2010 && ?Tahun <= 2024) .
+
+      {
+        SELECT distinct ?Respondent ?JumlahJamKerja
+        WHERE {
+          ?Respondent :respondedToQuestion ?Question ;
+            :gaveAnswer ?Answer .
+          ?Answer :isAnswerOf ?Question ;
+            rdfs:label ?JumlahJamKerja .
+          ?Question :hasQuestionDetail ?kolom_filter .
+          FILTER (regex(?kolom_filter, "Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?", "i")) .
+        }
+      } UNION 
+      {
+        SELECT distinct ?Respondent ?JumlahJamKerja
+        WHERE {
+          ?Respondent :respondedToQuestion ?Question1 ;
+            :gaveAnswer ?Answer1 .
+
+          ?Question1 rdfs:label ?kolom1 .
+          FILTER (regex(?kolom1, "Berapakah upah/gaji bersih yang diterima (NAMA) selama sebulan yang lalu dari pekerjaan utama? (berupa Uang) ", "i")) .
+
+          ?Answer1 :isAnswerOf ?Question1 ;
+            rdfs:label ?JumlahJamKerja ;
+            :isEquivalentToAnswer | :hasEquivalentAnswer | :isGeneralAnswerOf | :isPartOfAnswer ?relatedAnswer.
+          ?relatedAnswer :isAnswerOf ?relatedQuestion .
+          ?relatedQuestion :hasQuestionDetail ?kolom_filter1 .
+          FILTER (regex(?kolom_filter1, "Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?", "i")) .
+        }
+      } UNION 
+      {
+        SELECT distinct ?Respondent (SUM(xsd:integer(?nilaiJumlahJamKerja)) as ?JumlahJamKerja)
+        WHERE {
+          SELECT DISTINCT ?Respondent ?Question3 ?Answer3 ?nilaiJumlahJamKerja
+          WHERE {
+            ?Respondent :respondedToQuestion ?Question3 ;
+              :gaveAnswer ?Answer3 .
+
+            ?Question3 rdfs:label ?kolom1 ;
+               :isPartOfQuestion ?relatedQuestion1 .
+            ?relatedQuestion1 :hasQuestionDetail ?kolom_filter3 .
+            FILTER (regex(?kolom_filter3, "Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?", "i")) .
+
+            ?Answer3 :isAnswerOf ?Question3 ;
+              :hasAnswerValue ?nilaiJumlahJamKerja .
+          }
+        }
+        GROUP BY ?Respondent
+      }
+    }
+}
+GROUP BY ?JumlahJamKerja ?Tahun
