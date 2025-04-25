@@ -1,0 +1,24 @@
+PREFIX : <http://example.org/survey#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?Respondent ?Tahun ?JumlahJamKerja
+WHERE {
+  ?Survey a :Survey ;
+  :hasYear ?Tahun ;
+  :hasRespondent ?Respondent .
+  
+  SELECT distinct ?Respondent ?JumlahJamKerja
+  WHERE {
+    ?Respondent :respondedToQuestion ?Question ;
+    :gaveAnswer ?Answer .
+    
+    ?Question :hasQuestionDetail ?kolom ;
+    :isEquivalentToQuestion | :hasEquivalentQuestion | :isGeneralQuestionOf ?relatedQuestion .
+    ?relatedQuestion :hasQuestionDetail ?kolom_filter .
+    FILTER (regex(?kolom_filter, "Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?", "i")) .
+    
+    ?Answer :isAnswerOf ?Question ;
+    rdfs:label ?JumlahJamKerja .
+  }
+}
