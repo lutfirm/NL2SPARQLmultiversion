@@ -1,0 +1,12 @@
+#Q						Method(6)	Method(7)		Method(8)		Method(9)ours(ICL)		Method(10)ours(CoT)			Method(11)ours				Method(12)ours
+Q1						✔				✔				✔					✔						✔						△						✖
+Q2						△				△				△					✔						✔						△						✖
+Q3						△				△				△					✔						✔						✖						✖
+Q4						△				△				△					✔						✔						✖						✖
+Q5						△				△				△					✔						✔						✖						✖
+Q6						△				△				△					✔						✔						✖						✖
+Q7						△				△				△					✔						✔						✖						✖
+Q8						△				△				△					△ 						✔ 						✖						✖
+Q9						△				△				△					△ 						△ 						✖						✖
+Q10						✔				△				△					△ 						△ 						✖						✖
+Correct query			20%				10%				10%					70%						80%						0%						0%
