@@ -1,0 +1,8 @@
+{
+    "jenis_agregasi": "COUNT",
+    "kolom_yang_dikalkulasikan": "Respondent",
+    "syarat": [],
+    "dasar_pengelompokan": {
+        "kolom": "8B Jumlah Jam Kerja Seluruhnya seminggu yang lalu"
+    }
+}
