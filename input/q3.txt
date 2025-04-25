@@ -1,0 +1,1 @@
+Q3="Jumlah penduduk menurut jumlah Jam Kerja Seluruh pekerjaan seminggu yang lalu"
