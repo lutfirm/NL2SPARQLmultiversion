@@ -1,0 +1,26 @@
+{
+    "jenis_agregasi": "COUNT",
+    "kolom_yang_dikalkulasikan": "Respondent",
+    "syarat": [
+        {
+            "kolom": " Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?",
+            "nilai_batasan": null,
+            "tipe data": null,
+            "tipe property": "QuestionDetail"
+        },
+        {
+            "kolom": "Tahun",
+            "nilai_batasan": null,
+            "tipe data": null,
+            "tipe property": null
+        }
+    ],
+    "dasar_pengelompokan": [
+        {
+            "kolom": " Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?"
+        },
+        {
+            "kolom": "Tahun"
+        }
+    ]
+}
