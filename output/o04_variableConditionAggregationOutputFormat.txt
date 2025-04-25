@@ -1,0 +1,12 @@
+{
+    "jenis_agregasi": "COUNT",
+    "kolom_yang_dikalkulasikan": "Respondent",
+    "dasar_pengelompokan": [
+        {
+            "kolom": " Berapa jumlah jam kerja dari seluruh pekerjaan setiap hari selama seminggu yang lalu?"
+        },
+        {
+            "kolom": "Tahun"
+        }
+    ]
+}
